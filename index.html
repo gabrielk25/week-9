@@ -1,482 +1,123 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>PokéMart - Toko Pokémon (Struktur Latihan CSS)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07 Card Hover Glow</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Edu+SA+Beginner:wght@400..700&family=Encode+Sans+Semi+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200..800&display=swap');
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #334155;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-{font-family: Manrope}
-.store-title {font-family: Encode Sans Semi Expanded}
-.pkemon-name {font-family: Carter One}
-.pkemon-type {font-family:  Edu SA Beginner}
-.pokemon-desc {font-family: Edu SA Beginner}
-</style>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 16px 24px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
 
+    footer {
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 12px 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    main {
+      flex: 1;
+      padding: 24px 16px;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      flex: 0 1 260px;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px) scale(1.03);
+      border-color: rgba(249, 115, 22, 0.4);
+      box-shadow: 0 10px 24px rgba(249, 115, 22, 0.18), 0 0 14px rgba(251, 146, 60, 0.28);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card p {
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #475569;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
+  <header>
+    <h1>Galeri Foto (Card Hover Glow)</h1>
+  </header>
 
-        <!-- Header Toko -->
-        <div class="store-header">
-            <h1 class="store-title">🏪 PokéMart Official Store</h1>
-            <p class="store-subtitle">Pusat Adopsi Pokémon Terpercaya - Region Kanto</p>
-            
-            <div class="store-stats">
-                <div class="store-stat-item">💰 Saldo Trainer: <b>25,000 P$</b></div>
-                <div class="store-stat-item">🎒 Kapasitas Tim: <b>6 / 20</b></div>
-                <div class="store-stat-item">⭐ Rating Toko: <b>4.9 / 5.0</b></div>
-                <div class="store-stat-item">🛒 Keranjang: <b>0 Item</b></div>
-            </div>
-        </div>
+  <main>
+    <div class="flex-container">
+      <div class="card">
+        <img src="images-uniform/uniform-01-800x600.jpg" alt="Seseorang memegang kamera digital retro Fujifilm X100 silver">
+        <p>Seseorang memegang kamera digital retro Fujifilm X100 silver</p>
+      </div>
 
-        <hr>
+      <div class="card">
+        <img src="images-uniform/uniform-05-800x600.jpg" alt="Depo stasiun perkeretaapian barang saat matahari terbit keemasan">
+        <p>Depo stasiun perkeretaapian barang saat matahari terbit keemasan</p>
+      </div>
 
-        <!-- Daftar Card Pokémon (Menggunakan DIV tanpa tabel) -->
-        <div class="product-grid">
+      <div class="card">
+        <img src="images-uniform/uniform-11-800x600.jpg" alt="Dermaga kayu panjang menjorok ke danau pegunungan berair jernih">
+        <p>Dermaga kayu panjang menjorok ke danau pegunungan berair jernih</p>
+      </div>
 
-            <!-- Card 1: Bulbasaur -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0001</div>
-                <div class="card-image">
-                    <img src="gbr/bulbasaur.png" alt="Bulbasaur">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Bulbasaur</h2>
-                    <div class="pokemon-type">Grass / Poison</div>
-                    <p class="pokemon-desc">Pokémon ramah pembawa benih tanaman di punggungnya, sangat tenang dan cocok untuk pelatih pemula.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">500 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">15 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 5</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">420 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">45 / 45</span>
-                        </div>
-                    </div>
+  </main>
 
-                    <div class="card-actions">
-                        <label for="qty-1">Jumlah: </label>
-                        <input type="number" id="qty-1" name="qty" value="1" min="1" max="15">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2: Ivysaur -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0002</div>
-                <div class="card-image">
-                    <img src="gbr/ivysaur.png" alt="Ivysaur">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Ivysaur</h2>
-                    <div class="pokemon-type">Grass / Poison</div>
-                    <p class="pokemon-desc">Evolusi Bulbasaur dengan kuncup bunga mekar di punggungnya yang siap merekah indah.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">1,200 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">7 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 16</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">850 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">60 / 60</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-2">Jumlah: </label>
-                        <input type="number" id="qty-2" name="qty" value="1" min="1" max="7">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: Venusaur -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0003</div>
-                <div class="card-image">
-                    <img src="gbr/venusaur.png" alt="Venusaur">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Venusaur</h2>
-                    <div class="pokemon-type">Grass / Poison</div>
-                    <p class="pokemon-desc">Bunga raksasa di punggungnya mampu menyerap energi sinar matahari untuk menghasilkan serangan dahsyat.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">3,500 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">3 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 32</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">1,750 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">80 / 80</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-3">Jumlah: </label>
-                        <input type="number" id="qty-3" name="qty" value="1" min="1" max="3">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4: Charmander -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0004</div>
-                <div class="card-image">
-                    <img src="gbr/charmander.png" alt="Charmander">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Charmander</h2>
-                    <div class="pokemon-type">Fire</div>
-                    <p class="pokemon-desc">Kadal api yang ceria dengan nyala api di ujung ekornya yang menunjukkan kesehatan serta semangat juang.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">550 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">12 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 5</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">440 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">39 / 39</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-4">Jumlah: </label>
-                        <input type="number" id="qty-4" name="qty" value="1" min="1" max="12">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5: Charmeleon -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0005</div>
-                <div class="card-image">
-                    <img src="gbr/charmeleon.png" alt="Charmeleon">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Charmeleon</h2>
-                    <div class="pokemon-type">Fire</div>
-                    <p class="pokemon-desc">Memiliki temperamen membara dan cakar tajam. Api di ekornya bergolak dahsyat saat melawan musuh tangguh.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">1,300 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">6 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 16</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">880 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">58 / 58</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-5">Jumlah: </label>
-                        <input type="number" id="qty-5" name="qty" value="1" min="1" max="6">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6: Charizard -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0006</div>
-                <div class="card-image">
-                    <img src="gbr/charizard.png" alt="Charizard">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Charizard</h2>
-                    <div class="pokemon-type">Fire / Flying</div>
-                    <p class="pokemon-desc">Naga api legendaris bersayap kokoh yang sanggup melontarkan semburan api super panas pembelah batuan.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">4,000 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">2 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 36</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">2,100 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">78 / 78</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-6">Jumlah: </label>
-                        <input type="number" id="qty-6" name="qty" value="1" min="1" max="2">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 7: Squirtle -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0007</div>
-                <div class="card-image">
-                    <img src="gbr/squirtle.png" alt="Squirtle">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Squirtle</h2>
-                    <div class="pokemon-type">Water</div>
-                    <p class="pokemon-desc">Kura-kura mungil lincah dengan pertahanan cangkang keras dan semprotan air yang berdaya dorong kuat.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">520 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">14 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 5</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">430 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">44 / 44</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-7">Jumlah: </label>
-                        <input type="number" id="qty-7" name="qty" value="1" min="1" max="14">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 8: Wartortle -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0008</div>
-                <div class="card-image">
-                    <img src="gbr/wartortle.png" alt="Wartortle">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Wartortle</h2>
-                    <div class="pokemon-type">Water</div>
-                    <p class="pokemon-desc">Kura-kura bertelinga dan berekor tebal yang menyimpan air serta membantu menjaga keseimbangan di arus deras.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">1,250 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">5 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 16</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">860 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">59 / 59</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-8">Jumlah: </label>
-                        <input type="number" id="qty-8" name="qty" value="1" min="1" max="5">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 9: Blastoise -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0009</div>
-                <div class="card-image">
-                    <img src="gbr/blastoise.png" alt="Blastoise">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Blastoise</h2>
-                    <div class="pokemon-type">Water</div>
-                    <p class="pokemon-desc">Dua meriam air baja di tempurungnya sanggup melontarkan semburan air yang mampu menembus plat baja tebal.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">3,800 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">3 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 36</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">1,950 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">79 / 79</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-9">Jumlah: </label>
-                        <input type="number" id="qty-9" name="qty" value="1" min="1" max="3">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 10: Caterpie -->
-            <div class="pokemon-card">
-                <div class="card-badge">#0010</div>
-                <div class="card-image">
-                    <img src="gbr/caterpie.png" alt="Caterpie">
-                </div>
-                <div class="card-body">
-                    <h2 class="pokemon-name">Caterpie</h2>
-                    <div class="pokemon-type">Bug</div>
-                    <p class="pokemon-desc">Ulat hijau mungil yang sangat cepat tumbuh, memakan dedaunan dengan rakus dan sangat mudah dirawat.</p>
-                    
-                    <div class="pokemon-stats">
-                        <div class="stat-row">
-                            <span class="stat-label">Harga Beli:</span>
-                            <span class="stat-value">150 P$</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Stok Toko:</span>
-                            <span class="stat-value">25 Ekor</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Level:</span>
-                            <span class="stat-value">Lv. 3</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Kekuatan (CP):</span>
-                            <span class="stat-value">180 CP</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Darah (HP):</span>
-                            <span class="stat-value">45 / 45</span>
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <label for="qty-10">Jumlah: </label>
-                        <input type="number" id="qty-10" name="qty" value="1" min="1" max="25">
-                        <button type="button" class="btn btn-cart">🛒 Tambah Keranjang</button>
-                        <button type="button" class="btn btn-buy">⚡ Beli Sekarang</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <hr>
-
-        <!-- Footer Toko -->
-        <div class="store-footer">
-            <p>&copy; 2026 PokéMart International - Siap untuk latihan styling CSS (Flexbox / Grid).</p>
-        </div>
-
-    </div>
+  <footer>
+    <p>&copy; Latihan Layout Web - Card Hover Glow</p>
+  </footer>
 
 </body>
 </html>
