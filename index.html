@@ -49,17 +49,15 @@
     }
 
     .flex-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 20px;
-      justify-content: center;
+      column-width: 260px;
+      column-gap: 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .card {
-      flex: 0 1 260px;
+      break-inside: avoid;
+      margin-bottom: 20px;
       background-color: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
@@ -74,6 +72,12 @@
       transform: translateY(-4px) scale(1.03);
       border-color: rgba(249, 115, 22, 0.4);
       box-shadow: 0 10px 24px rgba(249, 115, 22, 0.18), 0 0 14px rgba(251, 146, 60, 0.28);
+    }
+
+    .img-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
     }
 
     .card img {
@@ -215,7 +219,7 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 24.jpeg" alt="buah">
+        <img src="karya/karya 24.jpeg" alt="buah" class="landscape-fix">
         <p>DBelajar menggambar buah realistis dengan shadow</p>
       </div>
 
@@ -245,7 +249,7 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 30.jpeg" alt="blender">
+        <img src="karya/karya 30.png" alt="blender">
         <p>Belajar membuat botol pump dan kaleng minuman </p>
       </div>
 
@@ -255,7 +259,7 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 32.jpeg" alt="kalkir">
+        <img src="karya/karya 32.jpeg" alt="kalkir" class="landscape-fix">
         <p>Tugas proses produksi grafika</p>
       </div>
 
@@ -275,7 +279,7 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 36.jpeg" alt="stationary">
+        <img src="karya/karya 36.jpeg" alt="stationary" class="landscape-fix">
         <p>Tugas menggambar realistic</p>
       </div>
 
@@ -285,12 +289,12 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 38.jpeg" alt="kayu">
+        <img src="karya/karya 38.jpeg" alt="kayu" class="landscape-fix">
         <p>Tugas menggambar tekstur kayu secara realistik</p>
       </div>
 
       <div class="card">
-        <img src="karya/karya 39.jpeg" alt="ikan">
+        <img src="karya/karya 39.jpeg" alt="ikan" class="landscape-fix">
         <p>Tugas menggambar serta mewarnai hewan yang hidup di air</p>
       </div>
 
@@ -305,7 +309,7 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 42.jpeg" alt="mewarnai menggunakan pensil warna">
+        <img src="karya/karya 42.jpeg" alt="mewarnai menggunakan pensil warna" class="landscape-fix">
         <p>Tugas menggambar menggunakan pensil warna pada kertas water color </p>
       </div>
 
@@ -430,12 +434,12 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 67.jpeg" alt="prosedur">
+        <img src="karya/karya 67.jpeg" alt="prosedur" class="landscape-fix">
         <p>Tugas konsep visual membuat gambar dari teks prosedur</p>
       </div>
 
       <div class="card">
-        <img src="karya/karya 68.jpeg" alt="tekstur anyam">
+        <img src="karya/karya 68.jpeg" alt="tekstur anyam" class="landscape-fix">
         <p>Tugas menggambar tekstur anyaman pada benda dengan jelas</p>
       </div>
 
@@ -450,11 +454,6 @@
       </div>
 
       <div class="card">
-        <img src="karya/karya 71.png" alt="karya 71">
-        <p>Deskripsi karya 71</p>
-      </div>
-
-      <div class="card">
         <img src="karya/karya 72.png" alt="github">
         <p>Tugas GitHub belajar membuat html memasukkan gambar </p>
       </div>
@@ -465,6 +464,44 @@
   <footer>
     <p>&copy; Gaby belajar gambar</p>
   </footer>
+
+  <script>
+    function fixLandscapeImages() {
+      document.querySelectorAll('img.landscape-fix').forEach(img => {
+        const applyRotation = () => {
+          if (!img.naturalWidth || !img.naturalHeight) return;
+          
+          let wrapper = img.parentElement;
+          if (!wrapper.classList.contains('img-wrapper')) {
+            wrapper = document.createElement('div');
+            wrapper.className = 'img-wrapper';
+            img.parentNode.insertBefore(wrapper, img);
+            wrapper.appendChild(img);
+          }
+
+          const cardWidth = wrapper.clientWidth;
+          const rotatedHeight = cardWidth * (img.naturalWidth / img.naturalHeight);
+          wrapper.style.height = rotatedHeight + 'px';
+          img.style.position = 'absolute';
+          img.style.top = '50%';
+          img.style.left = '50%';
+          img.style.width = rotatedHeight + 'px';
+          img.style.height = cardWidth + 'px';
+          img.style.maxWidth = 'none';
+          img.style.transform = 'translate(-50%, -50%) rotate(-90deg)';
+        };
+
+        if (img.complete) {
+          applyRotation();
+        } else {
+          img.addEventListener('load', applyRotation);
+        }
+      });
+    }
+
+    window.addEventListener('load', fixLandscapeImages);
+    window.addEventListener('resize', fixLandscapeImages);
+  </script>
 
 </body>
 </html>
